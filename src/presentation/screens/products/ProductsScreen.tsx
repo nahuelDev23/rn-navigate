@@ -3,7 +3,8 @@ import {Text, View} from 'react-native';
 import {globalStyles} from '../../theme/theme';
 import {FlatList} from 'react-native-gesture-handler';
 import {PrimaryButton} from '../../components/shared/PrimaryButton';
-import {useNavigation} from '@react-navigation/native';
+import {NavigationProp, useNavigation} from '@react-navigation/native';
+import {RootStackParams} from '../../routes/StackNavigator';
 
 const products = [
   {id: 1, name: 'Producto 1'},
@@ -14,7 +15,7 @@ const products = [
   {id: 6, name: 'Producto 6'},
 ];
 export const ProductsScreen = () => {
-  const navigation = useNavigation();
+  const navigation = useNavigation<NavigationProp<RootStackParams>>();
   return (
     <View style={globalStyles.container}>
       <Text>Productos</Text>
@@ -22,13 +23,18 @@ export const ProductsScreen = () => {
         data={products}
         renderItem={({item}) => (
           <PrimaryButton
-            to={() => navigation.navigate('Product' as never)}
+            to={() =>
+              navigation.navigate('Product', {
+                id: item.id,
+                name: item.name,
+              })
+            }
             label={item.name}
           />
         )}
       />
       <PrimaryButton
-        to={() => navigation.navigate('Settings' as never)}
+        to={() => navigation.navigate('Settings')}
         label="Ajustes"
       />
     </View>
