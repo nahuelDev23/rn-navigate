@@ -4,11 +4,10 @@ import {
   DrawerItemList,
   createDrawerNavigator,
 } from '@react-navigation/drawer';
-import { StackNavigator } from './StackNavigator';
-import { ProfilScreen } from '../screens/profile/ProfilScreen';
-import { globalColors } from '../theme/theme';
-import { View, useWindowDimensions } from 'react-native';
-import { BottomTab } from './BottomTab';
+import {ProfilScreen} from '../screens/profile/ProfilScreen';
+import {globalColors} from '../theme/theme';
+import {View, useWindowDimensions} from 'react-native';
+import {BottomTab} from './BottomTab';
 
 const Drawer = createDrawerNavigator();
 
